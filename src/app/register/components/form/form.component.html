@@ -1,0 +1,87 @@
+<div class="w-full">
+  <form [formGroup]="form">
+    <div class="space-y-2 mb-2">
+      <h3 class='text-lg font-bold text-violet-800'>Formulaire d'inscription</h3>
+      <h5 class='text-sm font-normal text-violet-600'>Veuillez remplir tous les champs pour procéder à votre inscription
+      </h5>
+    </div>
+    <div class="space-y-4">
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Nom *</label>
+        <input type="text" placeholder='Veuillez entrer votre nom'
+          [ngClass]="{'border-rose-600': getError('name', 'required')}" class="form-input rounded-md"
+          formControlName='name'>
+        <small class='text-rose-600' *ngIf="getError('name', 'required')">Veuillez entrer votre nom</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Prénoms *</label>
+        <input type="text" placeholder='Veullez entrez votre prénom(s)'
+          [ngClass]="{'border-rose-600': getError('firstName', 'required')}" class="form-input rounded-md"
+          formControlName='firstName'>
+        <small class='text-rose-600' *ngIf="getError('firstName', 'required')">Veuillez entrer votre prénom</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Nom de facebook *</label>
+        <input type="text" placeholder='Veullez entrez votre nom de facebook'
+          [ngClass]="{'border-rose-600': getError('fbName', 'required')}" class="form-input rounded-md"
+          formControlName='fbName'>
+        <small class='text-rose-600' *ngIf="getError('fbName', 'required')">Veuillez entrer votre nom de
+          facebook</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Numéro de téléphone *</label>
+        <input type="text" placeholder='Ex: 2250707070707'
+          [ngClass]="{'border-rose-600': getError('phoneNumber', 'required') || getError('phoneNumber', 'invalidPhoneNumber')}"
+          class="form-input rounded-md" formControlName='phoneNumber'>
+        <small class='text-rose-600' *ngIf="getError('phoneNumber', 'required')">Veuillez entrer votre numéro de
+          téléphone</small>
+        <small class='text-rose-600' *ngIf="getError('phoneNumber', 'invalidPhoneNumber')">Veuillez entrer un numéro de
+          téléphone valide</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Numéro de téléphone whatsapp *</label>
+        <input type="text" placeholder='Ex: 2250707070707'
+          [ngClass]="{'border-rose-600': getError('whaPhoneNumber', 'required') ||  getError('whaPhoneNumber', 'invalidPhoneNumber')}"
+          class="form-input rounded-md" formControlName='whaPhoneNumber'>
+        <small class='text-rose-600' *ngIf="getError('whaPhoneNumber', 'required')">Veuillez entrer votre numéro de
+          téléphone whatsapp</small>
+        <small class='text-rose-600' *ngIf="getError('whaPhoneNumber', 'invalidPhoneNumber')">Veuillez entrer un numéro
+          de
+          téléphone valide</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Ville de résidence *</label>
+        <input type="text" placeholder="Veuillez entrer votre ville de résidence"
+          [ngClass]="{'border-rose-600': getError('city', 'required')}" class="form-input rounded-md"
+          class="form-input rounded-md" formControlName='city'>
+        <small class='text-rose-600' *ngIf="getError('city', 'required')">Veuillez entrer votre ville de
+          résidence</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Participation *</label>
+        <select [ngClass]="{'border-rose-600': getError('participation', 'required')}" class="form-input rounded-md"
+          class="form-select rounded-md" formControlName='participation'>
+          <option value="">Sélectionnez le canal</option>
+          <option value="SANDPIT">Sablière</option>
+          <option value="ONLINE">En ligne</option>
+        </select>
+        <small class='text-rose-600' *ngIf="getError('participation', 'required')">Veuillez choisir le canal de
+          participation</small>
+      </div>
+      <div class='flex flex-col'>
+        <label class='text-sm text-slate-500 font-normal'>Intention *</label>
+        <textarea rows="4" [ngClass]="{'border-rose-600': getError('intention', 'required')}" class='rounded-md'
+          placeholder='Entrez votre intention...' formControlName='intention'></textarea>
+        <small class='text-rose-600' *ngIf="getError('intention', 'required')">Veuillez entrer votre
+          intention...</small>
+
+      </div>
+      <div class="text-center">
+        <button #sbbtn (click)="onSubmit()" [disabled]="form.invalid" [ngClass]="{
+          'bg-slate-200': sbbtn.disabled,
+          'bg-violet-700': !sbbtn.disabled
+        }" class='p-3 text-white md:w-3/6 w-full rounded-full'>Je m'inscris</button>
+      </div>
+    </div>
+  </form>
+</div>

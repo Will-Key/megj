@@ -1,0 +1,36 @@
+<form [formGroup]="form">
+  <div class='space-y-2 mb-2 text-center'>
+    <h4 class='text-xl font-bold text-violet-800'>Connexion</h4>
+    <h5 class='text-sm font-normal text-violet-600'>Veuillez entrer vos paramètres de connexion</h5>
+  </div>
+  <div class="space-y-4">
+    <div class='flex flex-col'>
+      <label class='text-sm text-slate-500 font-normal'>Email *</label>
+      <input type="text" placeholder='Email' [ngClass]="{'border-rose-600': getError('email', 'required')}"
+        class="form-input rounded-md" formControlName='email'>
+      <small class='text-rose-600' *ngIf="getError('email', 'required')">
+        Ce champs est requis
+      </small>
+      <small class='text-rose-600' *ngIf="getError('email', 'email')">
+        Cet email n'est pas valide
+      </small>
+    </div>
+    <div class='flex flex-col'>
+      <label class='text-sm text-slate-500 font-normal'>Mot de passe *</label>
+      <input type="text" placeholder='Mot de passe' [ngClass]="{'border-rose-600': getError('password', 'required')}"
+        class="form-input rounded-md" formControlName='password'>
+      <small class='text-rose-600' *ngIf="getError('password', 'required')">
+        Ce champs est requis
+      </small>
+      <small class='text-rose-600' *ngIf="getError('password', 'minLength')">
+        Au moins 8 caractères
+      </small>
+    </div>
+    <div class="text-center">
+      <button #sbbtn (click)="onSubmit()" [disabled]="form.invalid" [ngClass]="{
+        'bg-slate-200': sbbtn.disabled,
+        'bg-violet-700': !sbbtn.disabled
+      }" class='p-3 text-white md:w-3/6 w-full rounded-full'>Connexion</button>
+    </div>
+  </div>
+</form>
