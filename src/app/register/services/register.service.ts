@@ -22,8 +22,7 @@ export class RegisterService {
           paymentAmount: 0,
         })
         .then(() => {
-          console.log('compte créé')
-          this.sendInfoSms(data.phoneNumber)
+          this.initSmsSending(data.phoneNumber)
           return this.buildResponse(
             'success',
             'Votre inscription a été prise en compte'
@@ -48,18 +47,7 @@ export class RegisterService {
     }
   }
 
-  sendInfoSms(recipientPhoneNumber: string) {
-    console.log('Envoi du message')
-    this.initSmsSending(recipientPhoneNumber)
-      .then(() => {
-        console.log('envoie sms effectué')
-      })
-      .catch(() => {
-        console.log('envoie sms échoué')
-      })
-  }
-
-  async initSmsSending(recipientPhoneNumber: string) {
+  initSmsSending(recipientPhoneNumber: string) {
     console.log('initialisaion')
     campaignPayload.recipients.push({ phone: recipientPhoneNumber } as never)
     campaignPayload.message = environment.message
@@ -68,7 +56,7 @@ export class RegisterService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${environment.letextokey}`,
     })
-    return await this.http
+    return this.http
       .post<{ id: string }>('/api/v1/campaigns', payload, {
         headers: headers,
       })
