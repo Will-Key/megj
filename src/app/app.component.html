@@ -1,7 +1,18 @@
-<div [ngClass]=" url === '/login' ? 'md:grid-cols-3' : 'md:grid-cols-4 md:mt-6'"
-  class="md:grid md:gap-4 min-h-screen px-4 py-2">
+<div
+  *ngIf="url === '/login' || url === '/register'"
+  [ngClass]="url === '/login' ? 'md:grid-cols-3' : 'md:grid-cols-4 md:mt-6'"
+  class="md:grid md:gap-4 min-h-screen px-4 py-2"
+>
   <div
-    [ngClass]="url === '/login' ?'md:col-end-3 justify-self-center self-center w-full' : 'md:col-start-2 md:col-span-2' ">
+    [ngClass]="
+      url === '/login'
+        ? 'md:col-end-3 justify-self-center self-center w-full'
+        : 'md:col-start-2 md:col-span-2'
+    "
+  >
     <router-outlet></router-outlet>
   </div>
+</div>
+<div *ngIf="url === '/dashboard'" class="m-6">
+  <router-outlet></router-outlet>
 </div>

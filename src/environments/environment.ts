@@ -13,8 +13,21 @@ export const environment = {
     authDomain: 'megj-a6b90.firebaseapp.com',
     messagingSenderId: '326413185288',
     measurementId: 'G-HPSM5VTXTH',
-  }
-};
+  },
+  letextoinitsmssendingurl: 'https://api.letexto.com/v1/campaigns',
+  letextofinishssmssendinurl: 'https://api.letexto.com/v1/campaigns/',
+  letextokey: 'wnScP3MdEWFYSWOgKKr9KWoLHVytFq',
+  letextosender: '0575806605',
+  message: `
+  Paiement du droit de 5000FCFA par OM ou WAVE au 0787041347.
+  Par western,RIA et MoneyGram avec les références ci dessous :
+  Nom: AKE
+  Prénoms : AUDREY MANUELA
+  Possibilité de payer pour le pack Gabaon à 20.000FCFA.
+  Veuillez laisser un message sur le numéro de paiement après que celui ci soit effectif.
+  Délai de Paiement : 12/02/2023 
+  `,
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
