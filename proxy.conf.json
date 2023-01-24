@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://api.letexto.com/v1/campaigns",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
