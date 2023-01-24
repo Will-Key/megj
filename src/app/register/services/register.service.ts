@@ -48,7 +48,6 @@ export class RegisterService {
   }
 
   initSmsSending(recipientPhoneNumber: string) {
-    console.log('initialisaion')
     campaignPayload.recipients.push({ phone: recipientPhoneNumber } as never)
     campaignPayload.message = environment.message
     const payload = campaignPayload
@@ -64,7 +63,6 @@ export class RegisterService {
   }
 
   finishSmsSending(id: string) {
-    console.log('finalisation ', id)
     return this.http
       .post(
         `/api/v1/campaigns/${id}/schedules`,
