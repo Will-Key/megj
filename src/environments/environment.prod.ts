@@ -18,8 +18,7 @@ export const environment = {
   letextofinishssmssendinurl: 'https://api.letexto.com/v1/campaigns/',
   letextokey: 'wnScP3MdEWFYSWOgKKr9KWoLHVytFq',
   letextosender: '0575806605',
-  message: `
-  Paiement du droit de 5000FCFA par OM ou WAVE au 0787041347.
+  message: `Paiement du droit de 5000FCFA par OM ou WAVE au 0787041347.
   Par western,RIA et MoneyGram avec les références ci dessous :
   Nom: AKE
   Prénoms : AUDREY MANUELA

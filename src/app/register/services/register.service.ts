@@ -62,13 +62,14 @@ export class RegisterService {
   async initSmsSending(recipientPhoneNumber: string) {
     console.log('initialisaion')
     campaignPayload.recipients.push({ phone: recipientPhoneNumber } as never)
+    campaignPayload.message = environment.message
     const payload = campaignPayload
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${environment.letextokey}`,
     })
     return await this.http
-      .post<{ id: string }>(environment.letextoinitsmssendingurl, payload, {
+      .post<{ id: string }>('/api/v1/campaigns', payload, {
         headers: headers,
       })
       .subscribe(res => this.finishSmsSending(res.id))
@@ -76,14 +77,16 @@ export class RegisterService {
 
   finishSmsSending(id: string) {
     console.log('finalisation ', id)
-    return this.http.post(
-      `${environment.letextofinishssmssendinurl}${id}/schedules`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${environment.letextokey}`,
-        },
-      }
-    )
+    return this.http
+      .post(
+        `/api/v1/campaigns/${id}/schedules`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${environment.letextokey}`,
+          },
+        }
+      )
+      .subscribe()
   }
 }
