@@ -20,6 +20,8 @@ export class RegisterService {
           ...data,
           paymentStatus: 'NOTPAID',
           paymentAmount: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         })
         .then(() => {
           this.initSmsSending(data.phoneNumber)

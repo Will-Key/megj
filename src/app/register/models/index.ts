@@ -1,12 +1,4 @@
-export enum ParticipationChannel {
-  SANDPIT = 'SABLIERE',
-  ONLINE = 'EN LIGNE'
-}
-
-export enum PaymentStatus {
-  PAID = 'PAYÉ',
-  NOTPAID = 'NON PAYÉ'
-}
+import { ParticipationChannel, PaymentStatus } from '../../models'
 
 export interface RegisterFormInput {
   name: string
@@ -17,11 +9,6 @@ export interface RegisterFormInput {
   city: string
   intention: string
   participation: ParticipationChannel
-}
-
-export interface Participant extends RegisterFormInput {
-  id: string
-  status: PaymentStatus
 }
 
 export interface RegisterResponse {
