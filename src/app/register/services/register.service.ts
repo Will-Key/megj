@@ -12,7 +12,7 @@ import { RegisterFormInput, RegisterResponse } from '../models'
 export class RegisterService {
   letextoUrl = environment.production
     ? environment.letextourl
-    : '/api/v1/campaigns'
+    : '/api/campaigns/v1'
 
   constructor(private firestore: AngularFirestore, private http: HttpClient) {}
 
@@ -59,11 +59,10 @@ export class RegisterService {
     const payload = campaignPayload
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
       Authorization: `Bearer ${environment.letextokey}`,
     })
     return this.http
-      .post<{ id: string }>(this.letextoUrl, payload, {
+      .post<{ id: string }>('/api/v1/campaigns', payload, {
         headers: headers,
       })
       .subscribe(res => this.finishSmsSending(res.id))
@@ -72,12 +71,11 @@ export class RegisterService {
   finishSmsSending(id: string) {
     return this.http
       .post(
-        `${this.letextoUrl}/${id}/schedules`,
+        `/api/v1/campaigns/${id}/schedules`,
         {},
         {
           headers: {
             Authorization: `Bearer ${environment.letextokey}`,
-            'Access-Control-Allow-Origin': '*',
           },
         }
       )
