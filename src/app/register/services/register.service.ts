@@ -10,10 +10,6 @@ import { RegisterFormInput, RegisterResponse } from '../models'
   providedIn: 'root',
 })
 export class RegisterService {
-  letextoUrl = environment.production
-    ? environment.letextourl
-    : '/api/campaigns/v1'
-
   constructor(private firestore: AngularFirestore, private http: HttpClient) {}
 
   register(data: RegisterFormInput) {
@@ -60,6 +56,7 @@ export class RegisterService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${environment.letextokey}`,
+      'Access-Control-Allow-Methods': '*',
     })
     return this.http
       .post<{ id: string }>('/api/v1/campaigns', payload, {
@@ -76,6 +73,7 @@ export class RegisterService {
         {
           headers: {
             Authorization: `Bearer ${environment.letextokey}`,
+            'Access-Control-Allow-Methods': '*',
           },
         }
       )
