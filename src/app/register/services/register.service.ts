@@ -59,6 +59,7 @@ export class RegisterService {
     const payload = campaignPayload
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
       Authorization: `Bearer ${environment.letextokey}`,
     })
     return this.http
@@ -76,6 +77,7 @@ export class RegisterService {
         {
           headers: {
             Authorization: `Bearer ${environment.letextokey}`,
+            'Access-Control-Allow-Origin': '*',
           },
         }
       )
