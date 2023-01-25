@@ -1,0 +1,9 @@
+{
+  "/api/*": {
+    "target": "https://api.letexto.com",
+    "secure": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
