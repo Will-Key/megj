@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { AngularFirestore } from '@angular/fire/compat/firestore'
-import { catchError, EMPTY, from, map } from 'rxjs'
+import { from } from 'rxjs'
 import { environment } from '../../../environments/environment'
 import { campaignPayload } from '../../utils'
 import { RegisterFormInput, RegisterResponse } from '../models'
@@ -10,6 +10,10 @@ import { RegisterFormInput, RegisterResponse } from '../models'
   providedIn: 'root',
 })
 export class RegisterService {
+  letextoUrl = environment.production
+    ? environment.letextourl
+    : '/api/v1/campaigns'
+
   constructor(private firestore: AngularFirestore, private http: HttpClient) {}
 
   register(data: RegisterFormInput) {
@@ -58,7 +62,7 @@ export class RegisterService {
       Authorization: `Bearer ${environment.letextokey}`,
     })
     return this.http
-      .post<{ id: string }>('/api/v1/campaigns', payload, {
+      .post<{ id: string }>(this.letextoUrl, payload, {
         headers: headers,
       })
       .subscribe(res => this.finishSmsSending(res.id))
@@ -67,7 +71,7 @@ export class RegisterService {
   finishSmsSending(id: string) {
     return this.http
       .post(
-        `/api/v1/campaigns/${id}/schedules`,
+        `${this.letextoUrl}/${id}/schedules`,
         {},
         {
           headers: {

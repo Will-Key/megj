@@ -14,8 +14,7 @@ export const environment = {
     messagingSenderId: '326413185288',
     measurementId: 'G-HPSM5VTXTH',
   },
-  letextoinitsmssendingurl: 'https://api.letexto.com/v1/campaigns',
-  letextofinishssmssendinurl: 'https://api.letexto.com/v1/campaigns/',
+  letextourl: 'https://api.letexto.com/v1/campaigns',
   letextokey: 'wnScP3MdEWFYSWOgKKr9KWoLHVytFq',
   letextosender: '0575806605',
   message: `Paiement du droit de 5000FCFA par OM ou WAVE au 0787041347.
