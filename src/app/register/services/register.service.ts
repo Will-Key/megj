@@ -24,7 +24,7 @@ export class RegisterService {
           updatedAt: new Date(),
         })
         .then(() => {
-          this.initSmsSending(data.phoneNumber)
+          this.sendMessage(data.phoneNumber)
           return this.buildResponse(
             'success',
             'Votre inscription a été prise en compte'
@@ -37,6 +37,14 @@ export class RegisterService {
           )
         )
     )
+  }
+
+  sendMessage(phoneNumber: string) {
+    return this.http
+      .post('https://megj-backend.vercel.app', {
+        phoneNumber: phoneNumber,
+      })
+      .subscribe(res => console.log(res))
   }
 
   private buildResponse(

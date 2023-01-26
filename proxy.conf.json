@@ -1,8 +1,8 @@
 {
   "/api/*": {
-    "target": "https://api.letexto.com",
+    "target": "https://megj-backend.vercel.app",
     "secure": true,
-    "changeOrigin": false,
+    "changeOrigin": true,
     "pathRewrite": {
       "^/api": ""
     }
