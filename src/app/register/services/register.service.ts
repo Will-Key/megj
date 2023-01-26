@@ -24,7 +24,7 @@ export class RegisterService {
           updatedAt: new Date(),
         })
         .then(() => {
-          this.sendMessage(data.phoneNumber)
+          this.initSmsSending(data.phoneNumber)
           return this.buildResponse(
             'success',
             'Votre inscription a été prise en compte'
@@ -37,14 +37,6 @@ export class RegisterService {
           )
         )
     )
-  }
-
-  sendMessage(phoneNumber: string) {
-    return this.http
-      .post(`${environment.backend}/message`, {
-        phoneNumber: phoneNumber,
-      })
-      .subscribe(res => console.log(res))
   }
 
   private buildResponse(
