@@ -56,7 +56,6 @@ export class RegisterService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${environment.letextokey}`,
-      'Access-Control-Allow-Methods': '*',
     })
     return this.http
       .post<{ id: string }>('/api/v1/campaigns', payload, {
@@ -73,7 +72,6 @@ export class RegisterService {
         {
           headers: {
             Authorization: `Bearer ${environment.letextokey}`,
-            'Access-Control-Allow-Methods': '*',
           },
         }
       )

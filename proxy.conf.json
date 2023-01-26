@@ -2,7 +2,7 @@
   "/api/*": {
     "target": "https://api.letexto.com",
     "secure": true,
-    "changeOrigin": false,
+    "changeOrigin": true,
     "pathRewrite": {
       "^/api": ""
     }
