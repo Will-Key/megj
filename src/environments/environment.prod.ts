@@ -14,6 +14,7 @@ export const environment = {
     messagingSenderId: '326413185288',
     measurementId: 'G-HPSM5VTXTH',
   },
+  backend: 'https://megj-backend.vercel.app',
   letextourl: 'https://api.letexto.com/v1/campaigns',
   letextokey: 'wnScP3MdEWFYSWOgKKr9KWoLHVytFq',
   letextosender: '0575806605',

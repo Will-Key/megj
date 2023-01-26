@@ -41,7 +41,7 @@ export class RegisterService {
 
   sendMessage(phoneNumber: string) {
     return this.http
-      .post('https://megj-backend.vercel.app/message', {
+      .post(`${environment.backend}/message`, {
         phoneNumber: phoneNumber,
       })
       .subscribe(res => console.log(res))
